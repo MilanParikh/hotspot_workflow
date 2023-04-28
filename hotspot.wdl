@@ -68,6 +68,7 @@ task run_hotspot {
         import os
         import scanpy as sc
         import hotspot
+        import matplotlib.pyplot as plt
 
         jobs = ~{cpu} * 2
 
