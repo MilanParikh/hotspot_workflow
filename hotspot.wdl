@@ -69,6 +69,7 @@ task run_hotspot {
         import scanpy as sc
         import hotspot
         import matplotlib.pyplot as plt
+        import pickle
 
         jobs = ~{cpu} * 2
 
