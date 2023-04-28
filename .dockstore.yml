@@ -1,7 +1,7 @@
 version: 1.2
 workflows:
   - subclass: WDL
-    primaryDescriptorPath: /soupx.wdl
+    primaryDescriptorPath: /hotspot.wdl
     authors:
       - name: Milan Parikh
         email: mparikh@broadinstitute.org
