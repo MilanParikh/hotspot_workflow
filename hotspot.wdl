@@ -85,7 +85,7 @@ task run_hotspot {
 
         hs = hotspot.Hotspot(
             adata,
-            layer_key="counts",
+            layer_key=layer_key,
             model='~{hotspot_model}',
             latent_obsm_key="X_pca",
             umi_counts_obs_key="total_counts"
