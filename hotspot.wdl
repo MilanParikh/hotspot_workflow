@@ -3,6 +3,7 @@ workflow hotspot {
     input {
     	String output_directory
         File anndata_file
+        String? layer_key
         String hotspot_model = 'danb'
         Int n_neighbors = 30
         Int min_gene_threshold = 30
@@ -23,6 +24,7 @@ workflow hotspot {
         input:
             output_dir = output_directory_stripped,
             anndata_file = anndata_file,
+            layer_key = layer_key,
             hotspot_model = hotspot_model,
             n_neighbors = n_neighbors,
             min_gene_threshold = min_gene_threshold,
@@ -46,6 +48,7 @@ task run_hotspot {
     input {
         String output_dir
         File anndata_file
+        String? layer_key
         String hotspot_model
         Int n_neighbors
         Int min_gene_threshold
@@ -74,6 +77,11 @@ task run_hotspot {
         jobs = ~{cpu} * 2
 
         adata = sc.read_h5ad("~{anndata_file}")
+
+        layer_key = '~{default="None" layer_key}'
+        if(layer_key == "None") {
+            layer_key = None
+        }
 
         hs = hotspot.Hotspot(
             adata,
