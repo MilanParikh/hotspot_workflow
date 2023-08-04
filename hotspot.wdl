@@ -79,9 +79,9 @@ task run_hotspot {
         adata = sc.read_h5ad("~{anndata_file}")
 
         layer_key = '~{default="None" layer_key}'
-        if(layer_key == "None") {
+
+        if(layer_key == "None"):
             layer_key = None
-        }
 
         hs = hotspot.Hotspot(
             adata,
